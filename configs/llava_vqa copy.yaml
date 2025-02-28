@@ -1,0 +1,11 @@
+model_name: "liuhaotian/llava-v1.5-7b"
+model_type: "LLaVA"
+lora_rank: 16
+task_type: "vqa"
+num_answers: 3129  
+data_path: "data/raw/"  
+batch_size: 16
+learning_rate: 1e-4
+num_epochs: 5
+log_interval: 50
+checkpoint_dir: "data/checkpoints/"

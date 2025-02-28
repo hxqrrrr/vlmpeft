@@ -2,6 +2,8 @@ from torch.utils.data import Dataset
 from PIL import Image
 import json
 import os
+# vaq尚未实现
+
 
 class VQADataset(Dataset):
     def __init__(self, data_path, processor, split="train"):
