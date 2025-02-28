@@ -75,7 +75,7 @@ if __name__ == '__main__':
         avg_loss = total_loss / len(train_loader)
         print(f"Epoch [{epoch+1}/{config['num_epochs']}] completed, Average Loss: {avg_loss:.4f}")
         
-        checkpoint_path = os.path.join(config["checkpoint_dir"], f"checkpoint_epoch_{epoch+1}.pth")
+        checkpoint_path = os.path.join(config["checkpoint_dir"], f"checkpoint_{config['model_name']}_{config['model_type']}_{config['task_type']}_epoch_{epoch+1}.pth")
         save_checkpoint(model, optimizer, epoch, checkpoint_path)
 
     print("Training completed!")
