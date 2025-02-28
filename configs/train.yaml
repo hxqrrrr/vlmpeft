@@ -1,0 +1,11 @@
+model_name: "openai/clip-vit-base-patch16"
+model_type: "CLIP"
+data_path: "data/raw/"
+batch_size: 32
+learning_rate: 1e-4
+num_epochs: 5
+lora_rank: 16
+num_answers: 3129  # VQA v2.0常见答案数，可调整
+device: "cuda"
+checkpoint_dir: "data/checkpoints/"
+log_interval: 100
