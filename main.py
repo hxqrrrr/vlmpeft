@@ -9,11 +9,12 @@ from torch.utils.data import DataLoader
 from datasets.flickr8k_dataset import Flickr8kDataset
 from common.utils import load_config, save_checkpoint,collate_fn
 from models.vlm_with_lora import VLMWithLoRA
+import logging
+logging.basicConfig(level=logging.INFO)
 
 if __name__ == '__main__':
     print(sys.path)
-    os.environ["HTTP_PROXY"] = "http://127.0.0.1:7890"
-    os.environ["HTTPS_PROXY"] = "http://127.0.0.1:7890"
+    os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
     
     parser = argparse.ArgumentParser(description="Fine-tune VLM with LoRA on Flickr8k")
     parser.add_argument("--config", type=str, required=True, help="Path to config file")
@@ -49,6 +50,7 @@ if __name__ == '__main__':
         # 使用 tqdm 添加进度条
         with tqdm(train_loader, desc=f"Epoch [{epoch+1}/{config['num_epochs']}]", unit="batch") as pbar:
             for step, batch in enumerate(pbar):
+                
                 outputs = model(images=batch["images"], text=batch["text"])
 
                 if config["task_type"] == "vqa":
@@ -61,11 +63,11 @@ if __name__ == '__main__':
                 elif config["task_type"] == "captioning":
                     labels = model.tokenizer(batch["text"], return_tensors="pt", padding=True, truncation=True)["input_ids"].to(device)
                     loss = torch.nn.CrossEntropyLoss()(outputs.view(-1, outputs.size(-1)), labels.view(-1))
-
+                
                 optimizer.zero_grad()
                 loss.backward()
                 optimizer.step()
-
+                logging.info(f"Batch {step} of {len(train_loader)}")
                 total_loss += loss.item()
                 # 更新进度条显示当前损失
                 pbar.set_postfix({"loss": f"{loss.item():.4f}"})

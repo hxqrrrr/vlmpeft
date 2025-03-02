@@ -1,3 +1,18 @@
- *.pth
+*.pth
+*.pt
+*.bin
+*.ckpt
+*.safetensors
 
 __pycache__/
+*.py[cod]
+*$py.class
+
+.env
+.venv
+env/
+venv/
+ENV/
+
+.ipynb_checkpoints
+*.log

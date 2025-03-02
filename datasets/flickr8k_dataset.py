@@ -6,7 +6,7 @@ class Flickr8kDataset(Dataset):
     def __init__(self, data_path, task_type="contrastive"):
         self.data_path = data_path
         self.task_type = task_type
-        self.image_dir = os.path.join(data_path, "images")
+        self.image_dir = os.path.join(data_path, "Images")
         self.captions = self._load_captions(os.path.join(data_path, "captions.txt"))
 
     def _load_captions(self, captions_file):
