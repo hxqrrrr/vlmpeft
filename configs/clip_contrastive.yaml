@@ -1,12 +1,24 @@
-model_name: "openai/clip-vit-base-patch16"
-model_type: "CLIP"
-task_type: "vqa"
-data_path: "data/raw/"
-batch_size: 32
-learning_rate: 1e-4
-num_epochs: 5
-lora_rank: 16
-num_answers: 3129  # VQA v2.0常见答案数，可调整
-device: "cuda"
-checkpoint_dir: "data/checkpoints/"
-log_interval: 100
+# CLIP 对比学习任务配置
+
+model:
+  name: "openai/clip-vit-base-patch16"
+  type: "CLIP"
+
+task:
+  type: "contrastive"
+  dataset:
+    - name: "D1"
+      path: ""  # 空路径将使用随机数据集
+      type: "image_text_pair"
+    
+lora:
+  rank: 16
+  alpha: 32
+  dropout: 0.1
+  bias: "none"
+
+training:
+  batch_size: 16
+  learning_rate: 1e-4
+  num_epochs: 3
+  weight_decay: 0.01

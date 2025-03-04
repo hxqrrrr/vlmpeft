@@ -1,0 +1,36 @@
+{
+    "0": {
+        "rank": 0,
+        "pid": 908580,
+        "gpu_id": 1,
+        "cmd": "/root/miniconda3/envs/vlmpeft/bin/python /root/hxq/vlmpeft/demo.py",
+        "details": {
+            "pid": 908580,
+            "status": "running",
+            "cpu_percent": 0.0,
+            "memory_percent": 0.13481639856876673,
+            "memory_info": {
+                "rss": 0.33941650390625,
+                "vms": 5.595508575439453
+            },
+            "create_time": "2025-03-04 15:05:44"
+        }
+    },
+    "1": {
+        "rank": 1,
+        "pid": 908644,
+        "gpu_id": 2,
+        "cmd": "/root/miniconda3/envs/vlmpeft/bin/python /root/hxq/vlmpeft/demo.py",
+        "details": {
+            "pid": 908644,
+            "status": "disk-sleep",
+            "cpu_percent": 0.0,
+            "memory_percent": 0.13493155373747767,
+            "memory_info": {
+                "rss": 0.3397064208984375,
+                "vms": 5.595508575439453
+            },
+            "create_time": "2025-03-04 15:05:45"
+        }
+    }
+}
